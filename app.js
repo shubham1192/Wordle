@@ -81,9 +81,13 @@ app.post("/",function(req,res){
             var idx=[];
             for(var j=0;j<s.length;j++)
             {
+              //! T
+              //* L A T T T E    [2,4] 
+              //* T A M T F T
               if(s[j]!=r1[j] && s[j]===alphabets[i] && (idx.find(element=>element==j)==='undefined'))
               { 
                   idx.append(i);
+                  break;
                   // Make it yellow means the correct char exists but not on the correct position
               }
             }
