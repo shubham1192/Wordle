@@ -1,0 +1,187 @@
+<%- include ("header") -%>
+
+<body>
+<div>
+<h3><%= count%></h3>
+
+<% if(count>0){ %>
+
+<% for(var i=0;i<letters.length;i++){ %>
+    <div>
+    <% for(var j=0;j<5;j++){ %>
+        <% if(colors[i][j]===1){%>
+            <span style="display:inline-block" class="green" id="<%= i%><%= j%>"><%= letters[i][j]%></span>
+        <% } else if(colors[i][j]===2) {%>
+            <span style="display:inline-block" class="yellow" id="<%= i%><%= j%>"><%= letters[i][j]%></span>
+        <% } else if (colors[i][j]===3) {%>
+            <span style="display:inline-block" class="red" id="<%= i%><%= j%>"><%= letters[i][j]%></span>
+        <% }%>
+        <% } %>  
+    </div>
+<% } %>
+<%}%>
+
+
+<% for(var i=0;i<6;i++){ %>
+    <div style="display: inline-block" id="<%=i%>">
+    <form method="post" action="/">
+    <% for(var j=0;j<5;j++){ %>
+        <input type="text" name="item" class="i<%=i%>">
+        <% } %>  
+    <button type="submit" id="b<%=i%>">GO</button>
+    <br>
+</form>
+</div>
+<% } %>
+</div>
+
+
+<footer>
+    Footer
+</footer>
+<script>
+    
+if(<%= count %>==0)
+{
+    
+    document.getElementById('b1').style.visibility="hidden"
+    document.getElementById('b2').style.visibility="hidden"
+    document.getElementById('b3').style.visibility="hidden"
+    document.getElementById('b4').style.visibility="hidden"
+    document.getElementById('b5').style.visibility="hidden"
+    var a=document.getElementsByClassName('i1')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+    var a=document.getElementsByClassName('i2')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+    var a=document.getElementsByClassName('i3')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+    var a=document.getElementsByClassName('i4')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+    var a=document.getElementsByClassName('i5')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+
+    
+}  
+if(<%= count %>==1){
+    
+      
+    
+ 
+    document.getElementById('0').style.visibility="hidden"
+    document.getElementById('b2').style.visibility="hidden"
+    document.getElementById('b3').style.visibility="hidden"
+    document.getElementById('b4').style.visibility="hidden"
+    document.getElementById('b5').style.visibility="hidden"
+    var a=document.getElementsByClassName('i2')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+    var a=document.getElementsByClassName('i3')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+    var a=document.getElementsByClassName('i4')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+    var a=document.getElementsByClassName('i5')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+
+    
+    
+   
+
+     
+}
+if(<%= count %>==2){
+    document.getElementById('0').style.visibility="hidden"
+    document.getElementById('1').style.visibility="hidden"
+    document.getElementById('b3').style.visibility="hidden"
+    document.getElementById('b4').style.visibility="hidden"
+    document.getElementById('b5').style.visibility="hidden"
+    var a=document.getElementsByClassName('i3')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+    var a=document.getElementsByClassName('i4')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+    var a=document.getElementsByClassName('i5')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+}
+if(<%= count %>==3){
+    document.getElementById('0').style.visibility="hidden"
+    document.getElementById('1').style.visibility="hidden"
+    document.getElementById('2').style.visibility="hidden"
+    document.getElementById('b4').style.visibility="hidden"
+    document.getElementById('b5').style.visibility="hidden"
+    var a=document.getElementsByClassName('i4')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+    var a=document.getElementsByClassName('i5')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+}
+if(<%= count %>==4){
+    document.getElementById('0').style.visibility="hidden"
+    document.getElementById('1').style.visibility="hidden"
+    document.getElementById('2').style.visibility="hidden"
+    document.getElementById('3').style.visibility="hidden"
+    document.getElementById('b5').style.visibility="hidden"
+    var a=document.getElementsByClassName('i5')
+    for(let i=0;i<a.length;i++)
+    {
+        a[i].disabled=true;
+    }
+
+}
+if(<%= count %>==5){
+    document.getElementById('0').style.visibility="hidden"
+    document.getElementById('1').style.visibility="hidden"
+    document.getElementById('2').style.visibility="hidden"
+    document.getElementById('3').style.visibility="hidden"
+    document.getElementById('4').style.visibility="hidden"
+}
+if(<%= count %>>=6){
+    document.getElementById('0').style.visibility="hidden"
+    document.getElementById('1').style.visibility="hidden"
+    document.getElementById('2').style.visibility="hidden"
+    document.getElementById('3').style.visibility="hidden"
+    document.getElementById('4').style.visibility="hidden"
+    document.getElementById('5').style.visibility="hidden"
+}
+
+</script>
+</body>
+</html>
