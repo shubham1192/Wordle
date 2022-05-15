@@ -18,7 +18,7 @@ app.get("/favicon.ico", function (req, res) {
   res.status(204);
   res.end();
 });
-const r1="tamtft";
+const r1="water";
 const alphabets=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 app.set("view engine", "ejs"); //using ejs & creating a new dir (views/list.ejs)
 var count=-1;
@@ -32,6 +32,9 @@ app.get("/",function(req,res){
   console.log(count);
 
 })
+String.prototype.replaceAt = function(index, replacement) {
+  return this.substring(0, index) + replacement + this.substring(index + replacement.length);
+}
 app.post("/",function(req,res){
   let c=[];
   const arr=req.body.item;//! Jo le rhe hai hum
@@ -54,96 +57,43 @@ app.post("/",function(req,res){
   }
   else 
   {
-      var characters={};
-      var answer={};
-      for(var i = 0;i<26;i++)
+
+    var a = r1;
+
+      for(var i=0;i<a.length;i++)
       {
-        var count=0;
-        characters[alphabets[i]]=count;
-        answer[alphabets[i]]=count;
-      }
-      for(var i=0;i<s.length;i++)
-      { 
-        var ch = s.charAt(i); // tipsy   ltette
-        var ch1 = r1.charAt(i);// water  water
-        if(ch!=ch1)
+        if(a[i]===s[i])
         {
-        // mp[s[i]]++
-          characters[ch]++;
-          answer[ch1]++;
+          c.push(1);
+        
+          s = s.replace(s[i],'/');
+          a = a.replace(a[i],'/');
+          console.log(s,a);
+          continue;
         }
-        else
+        var check=false;
+        for(var j=0;j<s.length;j++)
         {
-          //! Step 2 (correct position)
-            console.log(ch);
-            c.push(1);
-           // Make the box green means it is on the correct position
+          if(s[i]===a[j])
+          {
+            s = s.replace(s[i],'/');
+            a = a.replace(a[j],'/');
+            console.log(s,a);
+            // Making it yellow
+            c.push(2);
+            check=true;
+            break;
+          }
         }
-      }
-      //! Step 3(check if any char matches)
-      // console.log(characters);
-      // console.log(answer);
-
-      var txt=r1;
-      for(var i=0;i<s.length;i++)
-      {
-        let res=txt.includes(s[i]);
-        if(res===true)
+        if(check===false)
         {
-          c.push(2);
-          const index=txt.indexOf(s[i]);
-          txt[index]='/'
-        }
-        else 
-        {
-          c.push(3)
+          // Making it red
+          c.push(3);
         }
       }
-      colors.push(c)
-
-
-
-      // for(var i = 0;i<26;i++)
-      // {
-      //   // console.log(alphabets[i1]);
-      //   if(characters[alphabets[i]]!==0 && answer[alphabets[i]]!==0)
-      //   {
-      //     var mini = Math.min(characters[alphabets[i]],answer[alphabets[i]]);
-      //     console.log(alphabets[i],characters[alphabets[i]],answer[alphabets[i]]);
-      //     while(mini--)
-      //     {
-      //       var idx=[];
-      //       for(var j=0;j<s.length;j++)
-      //       {
-      //         //! T
-      //         //* L A T T T E    [2,4] 
-      //         //* T A M T F T
-      //         if(s[j]!=r1[j] && s[j]===alphabets[i] && (idx.find(element=>element==j)===undefined))
-      //         { 
-      //             idx.push(i);
-      //             c.push(2);
-      //             break;
-      //             // Make it yellow means the correct char exists but not on the correct position 
-      //         }
-      //       }
-      //     }
-      //     characters[alphabets[i]]-=mini;
-      //     answer[alphabets[i]]-=mini;
-      //   }
-      //   else
-      //   {
-      //     // Non exsisting
-      //     console.log("Ghanta same na hai")
-      //     // c.push(3)
-      //   }
-      // }
-      // colors.push(c);
-
-
-
+    console.log("This is the color array ", c);
+    colors.push(c);
   }
-// count++;
-//   console.log(count);
 console.log(colors)
   res.redirect("/")
 
@@ -151,11 +101,3 @@ console.log(colors)
 app.listen(3000,function(){
   console.log("SERVER UP");
 })
-
-
-
-
-
-
-
-
