@@ -18,7 +18,8 @@ app.get("/favicon.ico", function (req, res) {
   res.status(204);
   res.end();
 });
-const r1="WATER";
+const word=["LIVER","POWER","MODEL","STINK","GRADE","QUIET","BENCH","DEATH","FRESH","ARGUE","MAJOR","PAPER","REPAY","FIRST","SHRUB","PRINT","ANGRY","FRONT","BASIC","SPICY","SPEND","PILOT","DOZEN","CLEAN","GREAT","ALIEN","SMART","RADIO","TIGER","SHINE","DRINK","FAVOR","PANIC","POINT","LIGHT","FRAME","BLACK","CHANT","THORN","SHAME","FOCUS ","MOVIE","PLANT","TRAIN","TIPSY","METAL","MONEY","ALBUM","FIELD","NIGHT"]
+var r1;
 const alphabets=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 app.set("view engine", "ejs"); //using ejs & creating a new dir (views/list.ejs)
 var count=0;
@@ -32,13 +33,15 @@ var SuccessCount=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 
 var visit=0;
 app.get("/",function(req,res){
-
+  var aa = Math.floor(Math.random()*50);
+  r1=word[aa];
   console.log(visit)
   res.render("start");
 })
 
 app.get("/:visit",function(req,res){
   // count++
+  
   var a = req.params['visit'];
   console.log("This is the a: ",a);
   res.render("grid",{count:finalCount[a-1],letters:F,Colors:C,
@@ -50,6 +53,7 @@ app.get("/:visit",function(req,res){
 
 app.post("/",function(req,res){
   let c=[];
+  console.log("Current word is: ",r1);
   const u = req.body.visitor;
   finalCount[u-1]++;
   console.log("This is the final count: ",finalCount[u-1]);
@@ -170,6 +174,7 @@ console.log(colors)
 
 })
 app.post("/begin",function(req,res){
+
   visit++;
   // count=0;
   // success=0;
@@ -181,6 +186,7 @@ app.post("/play",function(req,res){
   
   // count=0;
 //  success=0;
+
  found=[];
  colors=[];
   res.redirect("/")
