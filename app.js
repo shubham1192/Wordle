@@ -28,7 +28,7 @@ const F=[]
 var colors=[];
 var C=[]
 var finalCount=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-
+var SuccessCount=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 var visit=0;
 app.get("/",function(req,res){
@@ -42,7 +42,7 @@ app.get("/:visit",function(req,res){
   var a = req.params['visit'];
   console.log("This is the a: ",a);
   res.render("grid",{count:finalCount[a-1],letters:F,Colors:C,
-  success:success,visitor:req.params['visit'],item:found});
+  success:SuccessCount[a-1],visitor:req.params['visit'],item:found});
   // console.log(r1);
   // console.log(F);
   // console.log(count);
@@ -86,14 +86,7 @@ app.post("/",function(req,res){
   console.log(count);
   console.log('This is the F array ',F);
   //! Step 1(Matching the string)
-  if(C[u-1]===undefined)
-  {
-
-  }
-  else
-  {
-    colors=C[u-1];
-  }
+  
   if(s==r1)
   {
     //! All green 
@@ -102,13 +95,25 @@ app.post("/",function(req,res){
     {
       c.push(1);
     }
+    if(C[u-1]===undefined)
+    {
+
+    }
+    else
+    {
+      colors=C[u-1];
+    }
     colors.push(c);
+    // 
+    if(C[u-1]===undefined)
     C.push(colors)
-    success=1;
+    else
+    C[u-1]=colors;
+    SuccessCount[u-1]=1;
   }
   else 
   {
-
+   
     var a = r1;
 
       for(var i=0;i<a.length;i++)
@@ -143,7 +148,14 @@ app.post("/",function(req,res){
         }
       }
     console.log("This is the color array ", c);
-    
+    if(C[u-1]===undefined)
+    {
+
+    }
+    else
+    {
+      colors=C[u-1];
+    }
     colors.push(c);
     // 
     if(C[u-1]===undefined)
@@ -160,17 +172,17 @@ console.log(colors)
 app.post("/begin",function(req,res){
   visit++;
   // count=0;
-  success=0;
+  // success=0;
  found=[];
-colors=[];
+  colors=[];
   res.redirect("/"+visit)
 })
 app.post("/play",function(req,res){
   
   // count=0;
-  success=0;
+//  success=0;
  found=[];
-colors=[];
+ colors=[];
   res.redirect("/")
 })
 app.listen(3000,function(){
