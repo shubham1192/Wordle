@@ -1,0 +1,78 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: black;
+}
+.navbar{
+    border-bottom: 2px solid white;
+}
+.green
+{
+    background-color: green;
+    width: 5.4%;
+    margin-right: 1%;
+    padding: 0.5%;
+    margin-left: 0.5%;
+    text-align: center;
+    border: 2px solid green;
+    border-radius: 11px;
+    font-weight: bold;
+}
+.yellow{
+    background-color: #ffc107;
+    width: 5.4%;
+    margin-right: 1%;
+    padding: 0.5%;
+    margin-left: 0.5%;
+    text-align: center;
+    border: 2px solid #ffc107;
+    border-radius: 11px;
+    font-weight: bold;
+}
+.red{
+    background-color: slategray;
+    width: 5.4%;
+    margin-right: 1%;
+    padding: 0.5%;
+    margin-left: 0.5%;
+    text-align: center;
+    border: 2px solid slategray;
+    border-radius: 11px;
+    font-weight: bold;
+}
+.container-fluid{
+    text-align: center;
+}
+.i0,.i1,.i2,.i3,.i4,.i5 {
+    margin-right: 1%;
+    width: 5%;
+    /* padding: 1%; */
+    /* padding-left: 1.6%; */
+    text-align: center;
+    padding-top: 0.5%;
+    border-radius: 10px;
+    padding-bottom: 0.5%;
+    margin-bottom: 1%;
+}
+.bg-dark{
+    background-color: black!important;
+}
+.alpha{
+    text-align: center;
+    margin-bottom: 2%;
+}
+.go{
+    margin-top: -0.5%;
+    position: relative;
+    left: 0%;
+  
+}
+footer{
+    margin-top: 6rem;
+    margin-bottom: 1rem;
+    position: absolute;
+    text-align: center;
+    font-family: 'Rock Salt', cursive;
+    color: white;
+    width: 100%;
+    bottom: 0;
+}
