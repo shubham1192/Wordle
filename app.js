@@ -30,24 +30,24 @@ var C=[]
 
 
 
-var visit=0;
+var visit=0;// .1 1 .2 1
 // arrayNames.forEach(function(x){
 //     arrays[x]=data;
 // });
 // console.log(arrays[2])
 app.get("/",function(req,res){
-  visit++;
+
   console.log(visit)
   res.render("start");
 })
 
 app.get("/:visit",function(req,res){
   // count++
-  res.render("grid",{count:count,letters:F,colors:C,
-  success:success,visitor:visit,item:found});
-  console.log(r1);
-  console.log(F);
-  console.log(count);
+  res.render("grid",{count:count,letters:F,Colors:C,
+  success:success,visitor:req.params['visit'],item:found});
+  // console.log(r1);
+  // console.log(F);
+  // console.log(count);
 })
 
 app.post("/",function(req,res){
@@ -65,6 +65,7 @@ app.post("/",function(req,res){
 
   found.push(up);
   F.push(found)
+  console.log(F);
   //! Step 1(Matching the string)
   
   if(s==r1)
@@ -118,12 +119,14 @@ app.post("/",function(req,res){
     console.log("This is the color array ", c);
     colors.push(c);
     C.push(colors)
+    console.log("This is the important color array ",C);
   }
 console.log(colors)
   res.redirect("/"+u)
 
 })
 app.post("/begin",function(req,res){
+  visit++;
   count=0;
   success=0;
  found=[];
@@ -131,6 +134,7 @@ colors=[];
   res.redirect("/"+visit)
 })
 app.post("/play",function(req,res){
+  
   count=0;
   success=0;
  found=[];
