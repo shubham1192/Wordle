@@ -24,8 +24,8 @@ app.set("view engine", "ejs"); //using ejs & creating a new dir (views/list.ejs)
 var count=0;
 var success=0;
 var found=[];
+const F=[]
 var colors=[];
-var F=[]
 var C=[]
 
 
@@ -54,9 +54,21 @@ app.post("/",function(req,res){
   let c=[];
   count++
   const u = req.body.visitor;
+  console.log("This is the Uth ",u);
   var arr=req.body.item;//! Jo le rhe hai hum
   var up=arr.map(x=> x.toUpperCase())
-  
+  console.log("This is the indexing ", F[u-1]);
+  if(F[u-1]===undefined)
+  {
+    
+  }
+  else
+  {
+    // var a1 = ["a","b","c","D"];
+    // found.push(a1);
+    found=F[u-1];
+    console.log("This is the found array: ",found);
+  }
   let s="";
   for(var i=0;i<arr.length;i++)
   {
@@ -64,10 +76,27 @@ app.post("/",function(req,res){
   }
 
   found.push(up);
-  F.push(found)
-  console.log(F);
-  //! Step 1(Matching the string)
   
+
+  if(F[u-1]===undefined)
+  {
+    F.push(found)   
+  }
+  else
+  {
+    F[u-1]=found;
+  }  
+
+  console.log('This is the F array ',F);
+  //! Step 1(Matching the string)
+  if(C[u-1]===undefined)
+  {
+
+  }
+  else
+  {
+    colors=C[u-1];
+  }
   if(s==r1)
   {
     //! All green 
@@ -117,8 +146,14 @@ app.post("/",function(req,res){
         }
       }
     console.log("This is the color array ", c);
+    
     colors.push(c);
+    // 
+    if(C[u-1]===undefined)
     C.push(colors)
+    else
+    C[u-1]=colors;
+
     console.log("This is the important color array ",C);
   }
 console.log(colors)
