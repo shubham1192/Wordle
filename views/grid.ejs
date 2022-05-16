@@ -3,17 +3,19 @@
 <body>
 <div id="main" style="margin-top: 3rem;">
 <!-- <h3><%= count%></h3> -->
-
+<h1><%= visitor %></h1>
 <% if(count>0){ %>
 
-<% for(var i=0;i<item.length;i++){ %>
+<% for(var i=0;i<letters[visitor-1].length;i++){ %>
     <div class="alpha">
+    
     <% for(var j=0;j<5;j++){ %>
-        <% if(colors[visitor-1][i][j]===1){%>
+       
+        <% if(Colors[visitor-1][i][j]===1){%>
             <span style="display:inline-block" class="green" id="<%= i%><%= j%>"><%= letters[visitor-1][i][j]%></span>
-        <% } else if(colors[visitor-1][i][j]===2) {%>
+        <% } else if( Colors[visitor-1][i][j]===2) {%>
             <span style="display:inline-block" class="yellow" id="<%= i%><%= j%>"><%= letters[visitor-1][i][j]%></span>
-        <% } else if (colors[visitor-1][i][j]===3) {%>
+        <% } else if ( Colors[visitor-1][i][j]===3) {%>
             <span style="display:inline-block" class="red" id="<%= i%><%= j%>"><%= letters[visitor-1][i][j]%></span>
         <% }%>
         <% } %>  
@@ -42,7 +44,7 @@
     font-size: 4rem;font-family: 'Rock Salt', cursive;"> gotcha!!!</div>
     <div style="text-align: center;">
     <% for(var i=0;i<5;i++){%>
-        <span style="display:inline-block" class="green" id="<%= i%><%= j%>"><%= letters[count-1][i]%></span>
+        <span style="display:inline-block" class="green" id="<%= i%><%= j%>"><%= letters[visitor-1][count-1][i]%></span>
     <%}%>
     
 </div>
@@ -60,12 +62,6 @@
     <div style="color: red;text-align: center;margin-top: 3rem;
     margin-bottom: 4rem;
     font-size: 4rem;font-family: 'Rock Salt', cursive;">sorry</div>
-    <!-- <div style="text-align: center;">
-    <% for(var i=0;i<5;i++){%>
-        <span style="display:inline-block" class="green" id="<%= i%><%= j%>"><%= letters[count-1][i]%></span>
-    <%}%>
-    
-</div> -->
 <div style="text-align:center;margin-top:3rem;margin-bottom:3rem">
 <img style="width:8%" src="/public/imgs/smile (1).png" alt="" srcset="">
 </div>
