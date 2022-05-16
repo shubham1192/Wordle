@@ -27,14 +27,10 @@ var found=[];
 const F=[]
 var colors=[];
 var C=[]
+var finalCount=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 
-
-var visit=0;// .1 1 .2 1
-// arrayNames.forEach(function(x){
-//     arrays[x]=data;
-// });
-// console.log(arrays[2])
+var visit=0;
 app.get("/",function(req,res){
 
   console.log(visit)
@@ -43,7 +39,9 @@ app.get("/",function(req,res){
 
 app.get("/:visit",function(req,res){
   // count++
-  res.render("grid",{count:count,letters:F,Colors:C,
+  var a = req.params['visit'];
+  console.log("This is the a: ",a);
+  res.render("grid",{count:finalCount[a-1],letters:F,Colors:C,
   success:success,visitor:req.params['visit'],item:found});
   // console.log(r1);
   // console.log(F);
@@ -52,8 +50,9 @@ app.get("/:visit",function(req,res){
 
 app.post("/",function(req,res){
   let c=[];
-  count++
   const u = req.body.visitor;
+  finalCount[u-1]++;
+  console.log("This is the final count: ",finalCount[u-1]);
   console.log("This is the Uth ",u);
   var arr=req.body.item;//! Jo le rhe hai hum
   var up=arr.map(x=> x.toUpperCase())
@@ -64,8 +63,6 @@ app.post("/",function(req,res){
   }
   else
   {
-    // var a1 = ["a","b","c","D"];
-    // found.push(a1);
     found=F[u-1];
     console.log("This is the found array: ",found);
   }
@@ -86,7 +83,7 @@ app.post("/",function(req,res){
   {
     F[u-1]=found;
   }  
-
+  console.log(count);
   console.log('This is the F array ',F);
   //! Step 1(Matching the string)
   if(C[u-1]===undefined)
@@ -162,7 +159,7 @@ console.log(colors)
 })
 app.post("/begin",function(req,res){
   visit++;
-  count=0;
+  // count=0;
   success=0;
  found=[];
 colors=[];
@@ -170,7 +167,7 @@ colors=[];
 })
 app.post("/play",function(req,res){
   
-  count=0;
+  // count=0;
   success=0;
  found=[];
 colors=[];
